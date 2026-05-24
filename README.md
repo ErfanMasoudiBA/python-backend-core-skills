@@ -31,7 +31,7 @@ python-backend-learning-path/
 ├── 03-function-design-and-clean-code/
 ├── 04-data-modeling-with-dictionaries/
 └── 05-data-transformation-and-business-rules/
-
+```
 ---
 
 ## Learning Stages
@@ -107,4 +107,4 @@ It is designed to show:
 ## Status
 
 In progress.
-```
+
