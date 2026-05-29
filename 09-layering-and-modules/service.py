@@ -1,24 +1,18 @@
-from exceptions import AccountNotFoundError, InsufficientFundsError
 from models import BankAccount
 from repository import IAccountRepository
 
 
 def transfer_money(
     repo: IAccountRepository, from_owner: str, to_owner: str, amount: int
-) -> bool:
-    try:
-        from_owner_account = repo.get(from_owner)
-        to_owner_account = repo.get(to_owner)
-        from_owner_account.withdraw(amount)
-        to_owner_account.deposit(amount)
-        return True
+) -> None:
+    from_owner_account = repo.get(from_owner)
+    to_owner_account = repo.get(to_owner)
 
-    except InsufficientFundsError:
-        print("There is an error with deposit/withdraw")
-        return False
-    except AccountNotFoundError:
-        print("There is no such a user account")
-        return False
+    from_owner_account.withdraw(amount)
+    to_owner_account.deposit(amount)
+
+    repo.save(from_owner_account)
+    repo.save(to_owner_account)
 
 
 def create_account(repo: IAccountRepository, owner: str, amount: int) -> None:
