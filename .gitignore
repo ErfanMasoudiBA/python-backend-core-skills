@@ -23,3 +23,7 @@ db.sqlite3
 # کش‌های تست و ابزارها
 .pytest_cache/
 .coverage
+.spyproject
+
+
+*.png
